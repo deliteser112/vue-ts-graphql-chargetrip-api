@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-gray-800 text-white">
+  <nav class="fixed w-full bg-gray-800 text-white z-10">
     <div class="mx-auto px-8">
       <div class="relative flex items-center justify-between h-16">
         <div
@@ -23,7 +23,7 @@
       </div>
     </div>
   </nav>
-  <main class="flex justify-center">
+  <main class="max-w-[1200px] mx-auto pt-[100px]">
     <router-view />
   </main>
 </template>

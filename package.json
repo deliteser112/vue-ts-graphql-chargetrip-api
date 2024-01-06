@@ -10,7 +10,9 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
+    "@urql/vue": "^1.1.2",
     "axios": "^1.5.0",
+    "graphql": "^16.8.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

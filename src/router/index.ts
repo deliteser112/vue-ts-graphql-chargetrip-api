@@ -8,6 +8,7 @@ import {
 import LayoutMain from '../components/layout/LayoutMain.vue'
 import Error from '../views/Error.vue'
 import Home from '../views/Home.vue'
+import Detail from '../views/Detail.vue'
 
 const mainRoutes: RouteRecordRaw[] = [
   {
@@ -15,6 +16,12 @@ const mainRoutes: RouteRecordRaw[] = [
     name: 'Home',
     props: true,
     component: Home,
+  },
+  {
+    path: '/car/:id/:name',
+    name: 'Detail',
+    props: true,
+    component: Detail,
   },
 ]
 
