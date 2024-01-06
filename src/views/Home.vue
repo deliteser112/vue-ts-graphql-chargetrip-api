@@ -37,9 +37,9 @@ import { Ref, ref, watch } from 'vue'
 import { useQuery } from '@urql/vue'
 
 // components
-import LoadMoreButton from '../components/LoadMoreButton.vue'
-import VehicleCard from '../components/VehicleCard.vue'
-import VehicleCardSkeleton from '../components/VehicleCardSkeleton.vue'
+import LoadMoreButton from '../components/common/LoadMoreButton.vue'
+import VehicleCard from '../components/vehicle-list/VehicleCard.vue'
+import VehicleCardSkeleton from '../components/vehicle-list/VehicleCardSkeleton.vue'
 
 // queries
 import { VEHICLE_LIST_QUERY } from '../queries'

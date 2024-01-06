@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import { computed } from 'vue'
-import { useToast } from '../utils/useToast'
+import { useToast } from '../../utils/useToast'
 
 export default {
   setup() {

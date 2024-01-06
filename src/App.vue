@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { useToastProvider } from './utils/useToast'
-import Toast from './components/Toast.vue'
+import Toast from './components/common/Toast.vue'
 
 export default {
   components: {
