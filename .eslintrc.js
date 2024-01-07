@@ -25,7 +25,6 @@ module.exports = {
     'vue/script-setup-uses-vars': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-
     // Adding typescript file types, because airbnb doesn't allow this by default.
     'import/extensions': [
       'error',
@@ -51,7 +50,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['tailwind.config.js', 'vite.config.ts'],
+        devDependencies: ['tailwind.config.js', 'vite.config.ts', '**/*.spec.ts', '**/*.test.ts'],
       },
     ],
 

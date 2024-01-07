@@ -8,7 +8,7 @@
   <div v-else-if="error">Oh no... {{ error }}</div>
   <div v-else class="flex justify-center">
     <div
-      v-if="vehicleList.length > 0"
+      v-if="vehicleList && vehicleList.length > 0"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <VehicleCard
@@ -19,7 +19,7 @@
     </div>
 
     <div
-      v-else
+      v-else-if="data"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <VehicleCard
@@ -72,7 +72,6 @@ export default {
     // Watch for changes in the data and append new data to the list
     watch(result.data, (newData) => {
       if (newData) {
-        console.log('newData.vehicleList', newData.vehicleList)
         vehicleList.value = [...vehicleList.value, ...newData.vehicleList]
         if (page.value === 0) {
           toast.show(

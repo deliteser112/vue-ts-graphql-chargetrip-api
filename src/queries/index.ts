@@ -1,4 +1,4 @@
-import { gql } from '@urql/vue'
+import { gql } from 'graphql-tag'
 
 export const VEHICLE_LIST_QUERY = gql`
   query ($page: Int!, $size: Int!) {
