@@ -102,7 +102,10 @@ export default {
       vehicleList.value = []
 
       if (!searchText) {
-        toast.show('Please enter a search term.', 'info')
+        toast.show(
+          'Please type any text to search for make, model or version.',
+          'info',
+        )
       }
     }
 
