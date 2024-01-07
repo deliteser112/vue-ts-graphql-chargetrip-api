@@ -1,8 +1,8 @@
 import { gql } from 'graphql-tag'
 
 export const VEHICLE_LIST_QUERY = gql`
-  query ($page: Int!, $size: Int!) {
-    vehicleList(page: $page, size: $size) {
+  query ($page: Int!, $size: Int!, $search: String) {
+    vehicleList(page: $page, size: $size, search: $search) {
       id
       naming {
         make

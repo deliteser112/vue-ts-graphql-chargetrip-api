@@ -1,4 +1,5 @@
 <template>
+  <SearchBox v-on:filter="applyFilter" />
   <div
     v-if="fetching"
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
@@ -19,7 +20,7 @@
     </div>
 
     <div
-      v-else-if="data"
+      v-else-if="data && data.vehicleList.length > 0"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
     >
       <VehicleCard
@@ -28,8 +29,17 @@
         v-bind:vehicle="vehicle"
       />
     </div>
+    <div v-else>
+      <NoData />
+    </div>
   </div>
-  <LoadMoreButton v-on:load-more="loadMore" />
+  <LoadMoreButton
+    v-if="
+      (vehicleList && vehicleList.length) ||
+      (data && data.vehicleList.length > 0)
+    "
+    v-on:load-more="loadMore"
+  />
 </template>
 
 <script lang="ts">
@@ -37,6 +47,8 @@ import { Ref, ref, watch } from 'vue'
 import { useQuery } from '@urql/vue'
 
 // components
+import NoData from '../components/common/NoData.vue'
+import SearchBox from '../components/common/SearchBox.vue'
 import LoadMoreButton from '../components/common/LoadMoreButton.vue'
 import VehicleCard from '../components/vehicle-list/VehicleCard.vue'
 import VehicleCardSkeleton from '../components/vehicle-list/VehicleCardSkeleton.vue'
@@ -53,31 +65,29 @@ import { useToast } from '../utils/useToast'
 export default {
   name: 'VehicleList',
   components: {
+    NoData,
+    SearchBox,
     LoadMoreButton,
     VehicleCard,
     VehicleCardSkeleton,
   },
   setup() {
-    const page: Ref<number> = ref(0)
     const size = 20
+    const page: Ref<number> = ref(0)
     const vehicleList: Ref<Vehicle[]> = ref([])
+    const search: Ref<string> = ref('')
 
     const toast = useToast()
 
     const result = useQuery({
       query: VEHICLE_LIST_QUERY,
-      variables: { page, size },
+      variables: { page, size, search },
     })
 
     // Watch for changes in the data and append new data to the list
     watch(result.data, (newData) => {
       if (newData) {
         vehicleList.value = [...vehicleList.value, ...newData.vehicleList]
-        if (page.value === 0) {
-          toast.show(
-            `Exciting news! |  A brand new model has just arrived in our showroom. Don't miss out on the chance to be the first to check out its amazing features and capabilities. Hurry up, it's waiting for you!`,
-          )
-        }
       }
     })
 
@@ -85,11 +95,23 @@ export default {
       page.value += 1
     }
 
+    const applyFilter = (searchText: string) => {
+      // reset page count and vehicle list
+      search.value = searchText
+      page.value = 0
+      vehicleList.value = []
+
+      if (!searchText) {
+        toast.show('Please enter a search term.', 'info')
+      }
+    }
+
     return {
       fetching: result.fetching,
       data: result.data,
       error: result.error,
       vehicleList,
+      applyFilter,
       loadMore,
     }
   },
