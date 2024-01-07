@@ -29,10 +29,10 @@ export default defineComponent({
   setup(props) {
     const router = useRouter()
 
+    const detailPath = `/car/${props.vehicle.id}/${props.vehicle.naming.make}-${props.vehicle.naming.model}`
+
     const goToDetail = () => {
-      router.push(
-        `/car/${props.vehicle.id}/${props.vehicle.naming.make}-${props.vehicle.naming.model}`,
-      )
+      router.push(detailPath)
     }
 
     return {

@@ -11,8 +11,8 @@ app.use(urql, {
   exchanges: [cacheExchange, fetchExchange],
   fetchOptions: {
     headers: {
-      'x-client-id': '6596187814cf192fba0cae08',
-      'x-app-id': '6596187814cf192fba0cae0a',
+      'x-client-id': '659a8df0c8403358b02cdb63',
+      'x-app-id': '659a8df0c8403358b02cdb65',
     },
   },
 })
