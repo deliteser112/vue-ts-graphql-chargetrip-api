@@ -37,6 +37,7 @@ import { VEHICLE_QUERY } from '../queries'
 import { VehicleDetail } from '../types/vehicleDetails'
 
 export default {
+  name: 'VehicleDetail',
   components: {
     VehicleDetailSkeleton,
     BackButton,

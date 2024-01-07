@@ -7,21 +7,21 @@ import {
 } from 'vue-router'
 import LayoutMain from '../components/layout/LayoutMain.vue'
 import Error from '../views/Error.vue'
-import Home from '../views/Home.vue'
-import Detail from '../views/Detail.vue'
+import VehicleList from '../views/VehicleList.vue'
+import VehicleDetail from '../views/VehicleDetail.vue'
 
 const mainRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Home',
+    name: 'VehicleList',
     props: true,
-    component: Home,
+    component: VehicleList,
   },
   {
     path: '/car/:id/:name',
-    name: 'Detail',
+    name: 'VehicleDetail',
     props: true,
-    component: Detail,
+    component: VehicleDetail,
   },
 ]
 

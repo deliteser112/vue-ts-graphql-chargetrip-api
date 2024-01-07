@@ -51,9 +51,10 @@ import { Vehicle } from '../types/vehicleList'
 import { useToast } from '../utils/useToast'
 
 export default {
+  name: 'VehicleList',
   components: {
-    VehicleCard,
     LoadMoreButton,
+    VehicleCard,
     VehicleCardSkeleton,
   },
   setup() {
@@ -71,6 +72,7 @@ export default {
     // Watch for changes in the data and append new data to the list
     watch(result.data, (newData) => {
       if (newData) {
+        console.log('newData.vehicleList', newData.vehicleList)
         vehicleList.value = [...vehicleList.value, ...newData.vehicleList]
         if (page.value === 0) {
           toast.show(
