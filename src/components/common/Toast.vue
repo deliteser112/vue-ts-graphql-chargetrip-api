@@ -1,34 +1,5 @@
 <template>
   <transition name="slide-right">
-    <!-- <div
-      v-if="toast.state.message"
-      class="fixed top-[100px] right-5 z-[1000] transition-all duration-500 ease-in-out p-3 shadow-lg rounded-lg"
-      v-bind:class="toastClass"
-    >
-      <button
-        class="text-xs font-semibold text-indigo-600 hover:text-indigo-500 absolute top-2 right-2"
-        v-on:click="toast.close"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          class="h-6 w-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <div class="text-sm text-white mt-[15px] mr-[30px]">
-        {{ toast.state.message }}
-      </div>
-    </div> -->
-
     <div
       v-if="toast.state.message"
       class="fixed top-[100px] right-5 z-[1000] transition-all duration-500 ease-in-out flex items-center w-full max-w-xs p-4"
@@ -55,7 +26,9 @@
         </svg>
         <span class="sr-only">Fire icon</span>
       </div>
-      <div class="ms-3 text-sm font-normal">{{ toast.state.message }}</div>
+      <div class="ms-3 text-sm font-normal text-left">
+        {{ toast.state.message }}
+      </div>
       <button
         type="button"
         class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -108,7 +81,7 @@ export default {
         if (newValue) {
           setTimeout(() => {
             toast.close()
-          }, 113000)
+          }, 3000)
         }
       },
     )
